@@ -11,10 +11,10 @@ public class ChampionTest {
     @Before
     public void testChampions(){
          champ = new Champion("Cloud", new Champion.Boots("boots", (short) 25),
-                 new Champion.Weapon("Broad sword", 10));
+                 new Champion.Weapon("Broad sword", (short) 10));
 
          champ2 = new Champion("test", new Champion.Boots("regular", (short) 25),
-                     new Champion.Weapon("long sword", 10));
+                     new Champion.Weapon("long sword", (short) 10));
     }
 
     @Test
@@ -32,12 +32,24 @@ public class ChampionTest {
     @Test
     public void testChampionSetters(){
         assertNotNull(champ);
+        // check champion name setter
         champ.setName("Viegar");
         assertEquals("Viegar", champ.getName());
+
+        //check HP setter
+        champ.setHp((byte) 10);
+        assertEquals(10, champ.getHp());
+
+        // check weapon setters
+        champ.setWeapon(new Champion.Weapon("bat", (short) 5));
+        assertEquals("bat", champ.getWeaponName());
+        assertEquals(5, champ.getWeaponDamage());
         champ.setWeaponName("black rod");
         assertEquals("black rod", champ.getWeaponName());
         champ.setWeaponDamage((short) 25);
         assertEquals(25, champ.getWeaponDamage());
+
+        //check boots setters
         champ.setBoots(new Champion.Boots("fire", (short) 15));
         assertEquals("fire", champ.getBootsName());
         assertEquals(15, champ.getBootsSpeed());
@@ -45,6 +57,10 @@ public class ChampionTest {
         assertEquals("magic", champ.getBootsName());
         champ.setBootsSpeed((short) 20);
         assertEquals(20, champ.getBootsSpeed());
+
+        // check speed setter
+        champ.setSpeed((short) 20);
+        assertEquals(40, champ.getSpeed());
     }
 
     @Test
@@ -56,12 +72,31 @@ public class ChampionTest {
         assertEquals(40, champ.getHp());
         champ.decreaseHp((byte) 50);
         assertEquals(0, champ.getHp());
+        champ.decreaseHp((byte) 50);
+        assertEquals(0, champ.getHp());
+        champ.increaseHp((byte) 50);
+        assertEquals(50, champ.getHp());
+        champ.increaseHp((byte) 50);
+        assertEquals(100, champ.getHp());
+        champ.increaseHp((byte) 50);
+        assertEquals(100, champ.getHp());
+        champ.increaseHp((byte) 50);
+        assertEquals(100, champ.getHp());
     }
 
     @Test
-    public void testChampionDamage(){
-//        champ.attack(champ2, (byte)50);
-//        assertEquals(50, champ2.getHp());
+    public void testChampionAttack(){
+        champ.attack(champ2, (byte) 50);
+        assertEquals(50, champ2.getHp());
+        champ.attack(champ2, (byte) 50);
+        assertEquals(0, champ2.getHp());
+        champ.attack(champ2, (byte) 50);
+        assertEquals(0, champ2.getHp());
+    }
+
+    @Test
+    public void testChampionIsAlive(){
+
     }
 
 

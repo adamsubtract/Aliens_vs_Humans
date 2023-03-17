@@ -5,6 +5,7 @@ public class Champion {
     private short speed = 10;
     private Boots boots;
     private Weapon weapon;
+
     public static class Boots {
         private String name;
         private short speed;
@@ -33,9 +34,9 @@ public class Champion {
     public static class Weapon {
         private String name;
         private short damage;
-        public Weapon(String name, int damage){
+        public Weapon(String name, short damage){
             this.name = name;
-            this.damage = (short) damage;
+            this.damage = damage;
         }
 
         /**
@@ -96,8 +97,8 @@ public class Champion {
         return hp;
     }
 
-    public int getSpeed() {
-        return speed;
+    public short getSpeed() {
+        return (short) (speed + this.boots.getSpeed());
     }
 
     public String getWeaponName() {
@@ -122,12 +123,12 @@ public class Champion {
         this.name = name;
     }
 
-    public void setSpeed(int speed) {
+    public void setSpeed(short speed) {
         this.speed = (short) speed;
     }
 
-    public void setHp(int hp) {
-        this.hp = (byte) hp;
+    public void setHp(byte hp) {
+        this.hp = hp;
     }
 
     public void setWeapon(Weapon weapon) {
