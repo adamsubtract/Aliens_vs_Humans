@@ -47,7 +47,7 @@ public class Champion {
             return name;
         }
 
-        public int getDamage() {
+        public short getDamage() {
             return damage;
         }
 
@@ -59,8 +59,8 @@ public class Champion {
             this.name = name;
         }
 
-        public void setDamage(int damage) {
-            this.damage = (short) damage;
+        public void setDamage(short damage) {
+            this.damage = damage;
         }
     }
 
@@ -102,13 +102,13 @@ public class Champion {
     }
 
     public String getWeaponName() {
-        return this.weapon.name;
+        return this.weapon.getName();
     }
 
-    public short getWeaponDamage(){ return this.weapon.damage; }
+    public short getWeaponDamage(){ return this.weapon.getDamage(); }
 
     public String getBootsName() {
-        return this.boots.name;
+        return this.boots.getName();
     }
 
     public int getBootsSpeed(){
