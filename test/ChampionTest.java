@@ -94,10 +94,5 @@ public class ChampionTest {
         assertEquals(0, champ2.getHp());
     }
 
-    @Test
-    public void testChampionIsAlive(){
-
-    }
-
 
 }
