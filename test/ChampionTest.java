@@ -22,7 +22,7 @@ public class ChampionTest {
         assertNotNull(champ);
         assertEquals("Cloud", champ.getName());
         assertEquals((short) 100, champ.getHp());
-        assertEquals((short) 10, champ.getSpeed());
+        assertEquals((short) 35, champ.getSpeed());
         assertEquals("boots", champ.getBootsName());
         assertEquals((short) 25, champ.getBootsSpeed());
         assertEquals("Broad sword", champ.getWeaponName());
