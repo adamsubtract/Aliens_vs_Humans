@@ -124,7 +124,7 @@ public class Champion {
     }
 
     public void setSpeed(short speed) {
-        this.speed = (short) speed;
+        this.speed = speed;
     }
 
     public void setHp(byte hp) {
