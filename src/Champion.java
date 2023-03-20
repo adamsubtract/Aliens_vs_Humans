@@ -1,7 +1,7 @@
 
 public class Champion {
     private String name;
-    private byte hp = 100;
+    private short hp = 1000;
     private short speed = 10;
     private Boots boots;
     private Weapon weapon;
@@ -70,17 +70,17 @@ public class Champion {
         this.weapon = weapon;
     }
 
-    public void decreaseHp(byte damage) {
+    public void increaseHp(short health) {
+        if((hp + health) >= 1000) hp = 1000;
+        else hp += health;
+    }
+
+    public void decreaseHp(short damage) {
         if((hp - damage) < 1) hp = 0;
         else hp -= damage;
     }
 
-    public void increaseHp(byte health) {
-        if((hp + health) >= 100) hp = 100;
-        else hp += health;
-    }
-
-    public void attack(Champion champ, byte damage){
+    public void attack(Champion champ, short damage){
         champ.decreaseHp(damage);
     }
 
@@ -93,7 +93,7 @@ public class Champion {
         return name;
     }
 
-    public byte getHp() {
+    public short getHp() {
         return hp;
     }
 

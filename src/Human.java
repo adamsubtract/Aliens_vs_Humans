@@ -1,25 +1,27 @@
 
 public class Human extends Champion{
-    private int armour;
-    private int attackDamage;
+    private short attackDamage = 5;
     private String gender;
     private String type;
 
-    public Human(String name, String type, Champion.Weapon weapon, Boots boots, int armour, int attackDamage, String gender){
+
+
+    public Human(String name, String type, Champion.Weapon weapon, Boots boots, short attackDamage,
+                 String gender){
         super(name, boots, weapon);
         this.type = type;
-        this.armour = armour;
         this.attackDamage = attackDamage;
         this.gender = gender;
+    }
+
+    @Override
+    public void attack(Champion champ, short attackDamage){
+        champ.decreaseHp((short) (this.getWeaponDamage() + attackDamage));
     }
 
     /**
      * Setter and getters
      */
-
-    public int getArmour() {
-        return armour;
-    }
 
     public int getAttackDamage() {
         return attackDamage;
@@ -29,11 +31,7 @@ public class Human extends Champion{
         return gender;
     }
 
-    public void setArmour(int armour) {
-        this.armour = armour;
-    }
-
-    public void setAttackDamage(int attackDamage) {
+    public void setAttackDamage(short attackDamage) {
         this.attackDamage = attackDamage;
     }
 
