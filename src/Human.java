@@ -4,23 +4,54 @@ public class Human extends Champion{
     private String gender;
     private String type;
 
+    Armour armour;
 
+    static class Armour{
+
+        private String name;
+        private short defense;
+
+        Armour(String name, short defense){
+            this.name = name;
+            this.defense = defense;
+        }
+
+        // Getters
+
+        public String getName() {
+            return name;
+        }
+
+        public short getDefense() {
+            return defense;
+        }
+
+        // Setters
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public void setDefense(short defense) {
+            this.defense = defense;
+        }
+    }
 
     public Human(String name, String type, Champion.Weapon weapon, Boots boots, short attackDamage,
-                 String gender){
+                 String gender, Armour armour){
         super(name, boots, weapon);
-        this.type = type;
         this.attackDamage = attackDamage;
         this.gender = gender;
+        this.type = type;
+        this.armour = armour;
     }
 
     @Override
     public void attack(Champion champ, short attackDamage){
-        champ.decreaseHp((short) (this.getWeaponDamage() + attackDamage));
+        champ.decreaseHp((short) (this.weapon.getDamage() + attackDamage));
     }
 
     /**
-     * Setter and getters
+     * Getters
      */
 
     public int getAttackDamage() {
@@ -31,6 +62,14 @@ public class Human extends Champion{
         return gender;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * Setters
+     */
+
     public void setAttackDamage(short attackDamage) {
         this.attackDamage = attackDamage;
     }
@@ -39,11 +78,8 @@ public class Human extends Champion{
         this.gender = gender;
     }
 
-    public String getType() {
-        return type;
-    }
-
     public void setType(String type) {
         this.type = type;
     }
+
 }

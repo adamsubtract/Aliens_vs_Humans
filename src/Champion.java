@@ -4,9 +4,9 @@ public class Champion {
     private short hp = 1000;
     private short speed = 10;
     private Boots boots;
-    private Weapon weapon;
+    Weapon weapon;
 
-    public static class Boots {
+    static class Boots {
         private String name;
         private short speed;
 
@@ -31,7 +31,7 @@ public class Champion {
             this.speed = speed;
         }
     }
-    public static class Weapon {
+    static class Weapon {
         private String name;
         private short damage;
         public Weapon(String name, short damage){
@@ -101,19 +101,6 @@ public class Champion {
         return (short) (speed + this.boots.getSpeed());
     }
 
-    public String getWeaponName() {
-        return this.weapon.getName();
-    }
-
-    public short getWeaponDamage(){ return this.weapon.getDamage(); }
-
-    public String getBootsName() {
-        return this.boots.getName();
-    }
-
-    public int getBootsSpeed(){
-        return this.boots.speed;
-    }
 
     /**
      * Setters
@@ -134,26 +121,5 @@ public class Champion {
     public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
     }
-
-    public void setWeaponName(String name){
-        this.weapon.setName(name);
-    }
-
-    public void setWeaponDamage(int damage){
-        this.weapon.setDamage((short) damage);
-    }
-
-    public void setBoots(Boots boots){
-        this.boots = boots;
-    }
-
-    public void setBootsName(String boots) {
-        this.boots.setName(boots);
-    }
-
-    public void setBootsSpeed(short speed){
-        this.boots.setSpeed(speed);
-    }
-
 
 }
