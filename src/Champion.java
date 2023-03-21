@@ -3,7 +3,7 @@ public class Champion {
     private String name;
     private short hp = 1000;
     private short speed = 10;
-    private Boots boots;
+    Boots boots;
     Weapon weapon;
 
     static class Boots {
@@ -80,11 +80,6 @@ public class Champion {
         else hp -= damage;
     }
 
-    public void attack(Champion champ, short damage){
-        champ.decreaseHp(damage);
-    }
-
-
     /**
      * Getters
      */
@@ -120,6 +115,10 @@ public class Champion {
 
     public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
+    }
+
+    public void setBoots(Boots boots) {
+        this.boots = boots;
     }
 
 }

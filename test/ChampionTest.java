@@ -23,10 +23,10 @@ public class ChampionTest {
         assertEquals("Cloud", champ.getName());
         assertEquals((short) 100, champ.getHp());
         assertEquals((short) 35, champ.getSpeed());
-        assertEquals("boots", champ.getBootsName());
-        assertEquals((short) 25, champ.getBootsSpeed());
-        assertEquals("Broad sword", champ.getWeaponName());
-        assertEquals((short) 10, champ.getWeaponDamage());
+        assertEquals("boots", champ.boots.getName());
+        assertEquals((short) 25, champ.boots.getSpeed());
+        assertEquals("Broad sword", champ.weapon.getName());
+        assertEquals((short) 10, champ.weapon.getDamage());
     }
 
     @Test
@@ -42,21 +42,21 @@ public class ChampionTest {
 
         // check weapon setters
         champ.setWeapon(new Champion.Weapon("bat", (short) 5));
-        assertEquals("bat", champ.getWeaponName());
-        assertEquals(5, champ.getWeaponDamage());
-        champ.setWeaponName("black rod");
-        assertEquals("black rod", champ.getWeaponName());
-        champ.setWeaponDamage((short) 25);
-        assertEquals(25, champ.getWeaponDamage());
+        assertEquals("bat", champ.weapon.getName());
+        assertEquals(5, champ.weapon.getDamage());
+        champ.weapon.setName("black rod");
+        assertEquals("black rod", champ.weapon.getName());
+        champ.weapon.setDamage((short) 25);
+        assertEquals(25, champ.weapon.getDamage());
 
         //check boots setters
         champ.setBoots(new Champion.Boots("fire", (short) 15));
-        assertEquals("fire", champ.getBootsName());
-        assertEquals(15, champ.getBootsSpeed());
-        champ.setBootsName("magic");
-        assertEquals("magic", champ.getBootsName());
-        champ.setBootsSpeed((short) 20);
-        assertEquals(20, champ.getBootsSpeed());
+        assertEquals("fire", champ.boots.getName());
+        assertEquals(15, champ.boots.getSpeed());
+        champ.boots.setName("magic");
+        assertEquals("magic", champ.boots.getName());
+        champ.boots.setSpeed((short) 20);
+        assertEquals(20, champ.boots.getSpeed());
 
         // check speed setter
         champ.setSpeed((short) 20);
@@ -83,16 +83,5 @@ public class ChampionTest {
         champ.increaseHp((byte) 50);
         assertEquals(100, champ.getHp());
     }
-
-    @Test
-    public void testChampionAttack(){
-        champ.attack(champ2, (byte) 50);
-        assertEquals(50, champ2.getHp());
-        champ.attack(champ2, (byte) 50);
-        assertEquals(0, champ2.getHp());
-        champ.attack(champ2, (byte) 50);
-        assertEquals(0, champ2.getHp());
-    }
-
 
 }

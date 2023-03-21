@@ -45,10 +45,6 @@ public class Human extends Champion{
         this.armour = armour;
     }
 
-    @Override
-    public void attack(Champion champ, short attackDamage){
-        champ.decreaseHp((short) (this.weapon.getDamage() + attackDamage));
-    }
 
     /**
      * Getters
