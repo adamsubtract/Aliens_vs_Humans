@@ -36,7 +36,7 @@ public class Human extends Champion{
         }
     }
 
-    public Human(String name, String type, Champion.Weapon weapon, Boots boots, short attackDamage,
+    public Human(String name, String type, Champion.Weapon weapon, Boots boots,
                  String gender, Armour armour){
         super(name, boots, weapon);
         this.attackDamage = attackDamage;
@@ -45,6 +45,9 @@ public class Human extends Champion{
         this.armour = armour;
     }
 
+    public <T extends Champion> void attack(T champ, short damage){
+        champ.decreaseHp(damage);
+    }
 
     /**
      * Getters

@@ -8,19 +8,17 @@ public class HumanTest {
 
     @Before
     public void testHumans(){
-//        human = new Human("Sam", "Fighter", "Fists", "Regular", 50, 75, "Male");
+        human = new Human("Sam", "Fighter", new Champion.Weapon("Fists", (short)10),
+                new Champion.Boots("regular", (short) 10), "Male",
+                new Human.Armour("cloth", (short) 5));
     }
 
     @Test
-    public void testHumanGetters(){
-//        assertNotNull(human);
-//        assertEquals("Sam", human.getName());
-//        assertEquals("Fighter", human.getType());
-//        assertEquals("Fists", human.getWeapon());
-//        assertEquals("Regular", human.getBoots());
-//        assertEquals(50, human.getArmour());
-//        assertEquals(75, human.getAttackDamage());
-//        assertEquals("Male", human.getGender());
+    public void testHumanGetters() {
+        assertNotNull(human);
+        assertEquals("Sam", human.getName());
+        assertEquals("Fighter", human.getType());
+        assertEquals("Fists", human.weapon.getName());
     }
 
     @Test
