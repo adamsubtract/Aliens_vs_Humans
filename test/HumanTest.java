@@ -5,12 +5,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class HumanTest {
     Human human;
+    Human human2;
 
     @Before
     public void testHumans(){
-        human = new Human("Sam", "Fighter", new Champion.Weapon("Fists", (short)10),
-                new Champion.Boots("regular", (short) 10), "Male",
+        human = new Human("Sam", "Fighter", "Male",
+                new Champion.Weapon("Fists", (short)10),
+                new Champion.Boots("regular", (short) 10),
                 new Human.Armour("cloth", (short) 5));
+
+        human2 = new Human("Cloud", "Swordsman", "Male",
+                new Champion.Weapon("Long Sword", (short)10),
+                new Champion.Boots("regular", (short) 10),
+                new Human.Armour("Iron", (short) 5));
     }
 
     @Test
@@ -19,25 +26,41 @@ public class HumanTest {
         assertEquals("Sam", human.getName());
         assertEquals("Fighter", human.getType());
         assertEquals("Fists", human.weapon.getName());
+        assertEquals(10, human.weapon.getDamage());
+        assertEquals("regular", human.boots.getName());
+        assertEquals(10, human.boots.getSpeed());
+        assertEquals("regular", human.boots.getName());
+        assertEquals(5, human.armour.getDefense());
+        assertEquals("cloth", human.armour.getName());
     }
 
     @Test
     public void testHumanSetters(){
-//        assertNotNull(human);
-//        human.setName("Cloud");
-//        assertEquals("Cloud", human.getName());
-//        human.setType("Swordsman");
-//        assertEquals("Swordsman", human.getType());
-//        human.setWeapon("Buster Sword");
-//        assertEquals("Buster Sword", human.getWeapon());
-//        human.setBoots("Speed");
-//        assertEquals("Speed", human.getBoots());
-//        human.setArmour(60);
-//        assertEquals(60, human.getArmour());
-//        human.setAttackDamage(85);
-//        assertEquals(85, human.getAttackDamage());
-//        human.setGender("Female");
-//        assertEquals("Female", human.getGender());
+        assertNotNull(human);
+        human.setName("Cloud");
+        assertEquals("Cloud", human.getName());
+        human.setType("Swordsman");
+        assertEquals("Swordsman", human.getType());
+        human.setGender("Female");
+        assertEquals("Female", human.getGender());
+        human.weapon.setName("Long Sword");
+        assertEquals("Long Sword", human.weapon.getName());
+        human.weapon.setDamage((short) 20);
+        assertEquals(20, human.weapon.getDamage());
+        human.boots.setName("Speed");
+        assertEquals("Speed", human.boots.getName());
+        human.boots.setSpeed((short) 20);
+        assertEquals(20, human.boots.getSpeed());
+        human.armour.setName("Steel");
+        assertEquals("Steel", human.armour.getName());
+        human.armour.setDefense((short) 20);
+        assertEquals(20, human.armour.getDefense());
+
+    }
+
+    @Test
+    public void testHumanAttack(){
+
     }
 
 

@@ -36,10 +36,9 @@ public class Human extends Champion{
         }
     }
 
-    public Human(String name, String type, Champion.Weapon weapon, Boots boots,
-                 String gender, Armour armour){
+    public Human(String name, String type, String gender, Champion.Weapon weapon, Boots boots,
+                  Armour armour){
         super(name, boots, weapon);
-        this.attackDamage = attackDamage;
         this.gender = gender;
         this.type = type;
         this.armour = armour;
