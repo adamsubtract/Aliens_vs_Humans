@@ -48,6 +48,15 @@ public class Human extends Champion{
         champ.decreaseHp(damage);
     }
 
+
+    /**
+     * Returns Human attack damage plus weapon damage.
+     * @return Total Human damage output.
+     */
+    public short getTotalDamage(){
+        return (short) (attackDamage + weapon.getDamage());
+    }
+
     /**
      * Getters
      */

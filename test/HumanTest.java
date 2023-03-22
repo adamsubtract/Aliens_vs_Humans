@@ -60,7 +60,8 @@ public class HumanTest {
 
     @Test
     public void testHumanAttack(){
-
+        human.attack(human2, human.getTotalDamage());
+        assertEquals(985, human2.getHp());
     }
 
 
