@@ -57,6 +57,15 @@ public class Human extends Champion{
         return (short) (attackDamage + weapon.getDamage());
     }
 
+    @Override
+    public void decreaseHp(short damage) {
+        if((this.getHp() - damage) < 1) this.setHp((byte) 0);
+        else if ((this.getHp() - (damage - armour.getDefense())) > 1000) {
+            this.setHp((byte) 100);
+        }
+        else this.setHp((byte) (this.getHp() - (damage - armour.getDefense())));
+    }
+
     /**
      * Getters
      */

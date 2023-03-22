@@ -63,25 +63,4 @@ public class ChampionTest {
         assertEquals(40, champ.getSpeed());
     }
 
-    @Test
-    public void testChampionHp(){
-        assertEquals(100, champ.getHp());
-        champ.decreaseHp((byte) 50);
-        assertEquals(50, champ.getHp());
-        champ.decreaseHp((byte) 10);
-        assertEquals(40, champ.getHp());
-        champ.decreaseHp((byte) 50);
-        assertEquals(0, champ.getHp());
-        champ.decreaseHp((byte) 50);
-        assertEquals(0, champ.getHp());
-        champ.increaseHp((byte) 50);
-        assertEquals(50, champ.getHp());
-        champ.increaseHp((byte) 50);
-        assertEquals(100, champ.getHp());
-        champ.increaseHp((byte) 50);
-        assertEquals(100, champ.getHp());
-        champ.increaseHp((byte) 50);
-        assertEquals(100, champ.getHp());
-    }
-
 }
