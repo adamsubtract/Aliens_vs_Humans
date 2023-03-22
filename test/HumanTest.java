@@ -25,6 +25,7 @@ public class HumanTest {
         assertNotNull(human);
         assertEquals(50, human.getAttackDamage());
         assertEquals("Sam", human.getName());
+        assertEquals("Male", human.getGender());
         assertEquals("Fighter", human.getType());
         assertEquals("Fists", human.weapon.getName());
         assertEquals(10, human.weapon.getDamage());
