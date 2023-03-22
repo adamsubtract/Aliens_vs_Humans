@@ -1,6 +1,6 @@
 
 public class Human extends Champion{
-    private short attackDamage = 5;
+    private short attackDamage = 50;
     private String gender;
     private String type;
 
@@ -44,8 +44,8 @@ public class Human extends Champion{
         this.armour = armour;
     }
 
-    public <T extends Champion> void attack(T champ, short damage){
-        champ.decreaseHp(damage);
+    public <T extends Champion> void attack(T target){
+         target.decreaseHp(this.getTotalDamage());
     }
 
 

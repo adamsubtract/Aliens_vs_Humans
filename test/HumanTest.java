@@ -23,6 +23,7 @@ public class HumanTest {
     @Test
     public void testHumanGetters() {
         assertNotNull(human);
+        assertEquals(50, human.getAttackDamage());
         assertEquals("Sam", human.getName());
         assertEquals("Fighter", human.getType());
         assertEquals("Fists", human.weapon.getName());
@@ -39,6 +40,8 @@ public class HumanTest {
         assertNotNull(human);
         human.setName("Cloud");
         assertEquals("Cloud", human.getName());
+        human.setAttackDamage((short) 100);
+        assertEquals(100, human.getAttackDamage());
         human.setType("Swordsman");
         assertEquals("Swordsman", human.getType());
         human.setGender("Female");
@@ -60,7 +63,7 @@ public class HumanTest {
 
     @Test
     public void testHumanAttack(){
-        human.attack(human2, human.getTotalDamage());
+        human.attack(human2);
         assertEquals(985, human2.getHp());
     }
 
