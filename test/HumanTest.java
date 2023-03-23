@@ -10,7 +10,7 @@ public class HumanTest {
     @Before
     public void testHumans(){
         human = new Human("Sam", "Fighter", "Male",
-                new Champion.Weapon("Fists", (short)100),
+                new Champion.Weapon("Fists", (short)1000),
                 new Champion.Boots("regular", (short) 50),
                 new Human.Armour("cloth", (short) 50));
 
@@ -18,6 +18,16 @@ public class HumanTest {
                 new Champion.Weapon("Long Sword", (short)100),
                 new Champion.Boots("regular", (short) 50),
                 new Human.Armour("Iron", (short) 50));
+
+    }
+
+    @Test
+    public void testHumanAttack(){
+        human.attack(human2);
+        assertEquals(850, human2.getHp());
+        human.weapon.setDamage((short) 1000);
+        human.attack(human2);
+        assertEquals(0, human2.getHp());
     }
 
     @Test
@@ -65,14 +75,5 @@ public class HumanTest {
         assertEquals(20, human.armour.getDefense());
 
     }
-
-    @Test
-    public void testHumanAttack(){
-        human.attack(human2);
-        assertEquals(850, human2.getHp());
-        human.attack(human2);
-        assertEquals(700, human2.getHp());
-    }
-
 
 }
