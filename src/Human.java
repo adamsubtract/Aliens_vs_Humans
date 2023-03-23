@@ -1,6 +1,6 @@
 
 public class Human extends Champion{
-    private short attackDamage = 50;
+    private short attackDamage = 100;
     private String gender;
     private String type;
 
@@ -44,8 +44,15 @@ public class Human extends Champion{
         this.armour = armour;
     }
 
+    /**
+     * This method simulates and attack between two Human entities or a Human
+     * and Alien entity.
+     * @param target is the Human or Alien being attacked
+     * @param <T> Champion, Human or Alien entity.
+     */
+
     public <T extends Champion> void attack(T target){
-         target.decreaseHp(this.getTotalDamage());
+         target.decreaseHp(getTotalDamage());
     }
 
 
@@ -54,16 +61,22 @@ public class Human extends Champion{
      * @return Total Human damage output.
      */
     public short getTotalDamage(){
-        return (short) (attackDamage + weapon.getDamage());
+        return (short) (getAttackDamage() + weapon.getDamage());
+    }
+
+    public short getTotalSpeed(){
+        return (short) (getSpeed() + boots.getSpeed());
     }
 
     @Override
     public void decreaseHp(short damage) {
-        if((this.getHp() - damage) < 1) this.setHp((byte) 0);
-        else if ((this.getHp() - (damage - armour.getDefense())) > 1000) {
-            this.setHp((byte) 100);
+        if((getHp() - damage) < 1)
+            setHp((byte) 0);
+        else if ( (getHp() + this.armour.getDefense()) - damage > 1000 ) {
+            setHp((byte) 1000);
         }
-        else this.setHp((byte) (this.getHp() - (damage - armour.getDefense())));
+        else
+            setHp((short) ((getHp() + armour.getDefense()) - damage));
     }
 
     /**

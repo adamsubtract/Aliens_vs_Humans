@@ -10,29 +10,33 @@ public class HumanTest {
     @Before
     public void testHumans(){
         human = new Human("Sam", "Fighter", "Male",
-                new Champion.Weapon("Fists", (short)10),
-                new Champion.Boots("regular", (short) 10),
-                new Human.Armour("cloth", (short) 5));
+                new Champion.Weapon("Fists", (short)100),
+                new Champion.Boots("regular", (short) 50),
+                new Human.Armour("cloth", (short) 50));
 
         human2 = new Human("Cloud", "Swordsman", "Male",
-                new Champion.Weapon("Long Sword", (short)10),
-                new Champion.Boots("regular", (short) 10),
-                new Human.Armour("Iron", (short) 5));
+                new Champion.Weapon("Long Sword", (short)100),
+                new Champion.Boots("regular", (short) 50),
+                new Human.Armour("Iron", (short) 50));
     }
 
     @Test
     public void testHumanGetters() {
         assertNotNull(human);
-        assertEquals(50, human.getAttackDamage());
+        assertEquals(100, human.getAttackDamage());
+        assertEquals(200, human.getTotalDamage());
+        assertEquals(1000, human.getHp());
         assertEquals("Sam", human.getName());
         assertEquals("Male", human.getGender());
         assertEquals("Fighter", human.getType());
+        assertEquals(10, human.getSpeed());
+        assertEquals(60, human.getTotalSpeed());
         assertEquals("Fists", human.weapon.getName());
-        assertEquals(10, human.weapon.getDamage());
+        assertEquals(100, human.weapon.getDamage());
         assertEquals("regular", human.boots.getName());
-        assertEquals(10, human.boots.getSpeed());
+        assertEquals(50, human.boots.getSpeed());
         assertEquals("regular", human.boots.getName());
-        assertEquals(5, human.armour.getDefense());
+        assertEquals(50, human.armour.getDefense());
         assertEquals("cloth", human.armour.getName());
     }
 
@@ -65,7 +69,9 @@ public class HumanTest {
     @Test
     public void testHumanAttack(){
         human.attack(human2);
-        assertEquals(985, human2.getHp());
+        assertEquals(850, human2.getHp());
+        human.attack(human2);
+        assertEquals(700, human2.getHp());
     }
 
 

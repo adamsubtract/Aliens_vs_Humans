@@ -93,7 +93,7 @@ public class Champion {
     }
 
     public short getSpeed() {
-        return (short) (speed + this.boots.getSpeed());
+        return speed;
     }
 
 
@@ -109,7 +109,7 @@ public class Champion {
         this.speed = speed;
     }
 
-    public void setHp(byte hp) {
+    public void setHp(short hp) {
         this.hp = hp;
     }
 
