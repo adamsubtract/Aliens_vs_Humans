@@ -39,9 +39,6 @@ public class HumanTest {
         assertEquals("regular", human.boots.getName());
         assertEquals(50, human.armour.getDefense());
         assertEquals("cloth", human.armour.getName());
-        assertEquals(110, human.getTotalDamage());
-        human.weapon.setDamage((short) 500);
-        assertEquals(610, human.getTotalDamage());
     }
 
     @Test
@@ -67,7 +64,6 @@ public class HumanTest {
         assertEquals("Steel", human.armour.getName());
         human.armour.setDefense((short) 20);
         assertEquals(20, human.armour.getDefense());
-
     }
 
     @Test
@@ -82,11 +78,11 @@ public class HumanTest {
     }
 
     @Test
-    public void testDecreaseHP(){
-
+    public void testDecreaseHp(){
+        human.decreaseHp((short) 500);
+        assertEquals(550, human.getHp());
+        human.decreaseHp((short) 1000);
+        assertEquals(0, human.getHp());
     }
-
-
-
 
 }

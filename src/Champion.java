@@ -2,7 +2,7 @@
 public class Champion {
     final short MAX_HEALTH = 1000;
     private String name;
-    private short hp = 1000;
+    private short hp = MAX_HEALTH;
     private short speed = 10;
     Boots boots;
     Weapon weapon;

@@ -55,7 +55,7 @@ public class Human extends Champion{
          target.decreaseHp(getTotalDamage());
     }
 
-
+    
     /**
      * decreases Human hp by the damage minus armor. If the damage minus armour is below zero, set
      * hp to zero. If the hp is greater than 1000 after the attack, set hp to 1000.
@@ -65,8 +65,8 @@ public class Human extends Champion{
     public void decreaseHp(short damage) {
         if((getHp() - damage) < 1)
             setHp((byte) 0);
-        else if ( (getHp() + this.armour.getDefense()) - damage > 1000 ) {
-            setHp((byte) 1000);
+        else if ( (getHp() + this.armour.getDefense()) - damage > MAX_HEALTH ) {
+            setHp((byte) MAX_HEALTH);
         }
         else
             setHp((short) ((getHp() + armour.getDefense()) - damage));
