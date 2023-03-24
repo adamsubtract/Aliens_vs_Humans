@@ -45,7 +45,7 @@ public class Human extends Champion{
     }
 
     /**
-     * This method simulates and attack between two Human entities or a Human
+     * This method simulates and attack between two Human entities or Human
      * and Alien entity.
      * @param target is the Human or Alien being attacked
      * @param <T> Champion, Human or Alien entity.
@@ -57,17 +57,10 @@ public class Human extends Champion{
 
 
     /**
-     * Returns Human attack damage plus weapon damage.
-     * @return Total Human damage output.
+     * decreases Human hp by the damage minus armor. If the damage minus armour is below zero, set
+     * hp to zero. If the hp is greater than 1000 after the attack, set hp to 1000.
+     * @param damage how much health to decrease.
      */
-    public short getTotalDamage(){
-        return (short) (getAttackDamage() + weapon.getDamage());
-    }
-
-    public short getTotalSpeed(){
-        return (short) (getSpeed() + boots.getSpeed());
-    }
-
     @Override
     public void decreaseHp(short damage) {
         if((getHp() - damage) < 1)
@@ -82,6 +75,14 @@ public class Human extends Champion{
     /**
      * Getters
      */
+
+    public short getTotalDamage(){
+        return (short) (getAttackDamage() + weapon.getDamage());
+    }
+
+    public short getTotalSpeed(){
+        return (short) (getSpeed() + boots.getSpeed());
+    }
 
     public int getAttackDamage() {
         return attackDamage;

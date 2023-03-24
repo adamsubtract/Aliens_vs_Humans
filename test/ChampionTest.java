@@ -1,7 +1,6 @@
 import org.junit.Test;
 import org.junit.Before;
 
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ChampionTest {
@@ -10,19 +9,23 @@ public class ChampionTest {
 
     @Before
     public void testChampions(){
-         champ = new Champion("Cloud", new Champion.Boots("boots", (short) 25),
+         champ = new Champion("Cloud",
+                 new Champion.Boots("boots", (short) 25),
                  new Champion.Weapon("Broad sword", (short) 10));
 
-         champ2 = new Champion("test", new Champion.Boots("regular", (short) 25),
-                     new Champion.Weapon("long sword", (short) 10));
+         champ2 = new Champion("test",
+                 new Champion.Boots("regular", (short) 25),
+                 new Champion.Weapon("long sword", (short) 10));
     }
 
     @Test
     public void testChampionGetters(){
         assertNotNull(champ);
+        assertEquals((short) 1000, champ.MAX_HEALTH);
         assertEquals("Cloud", champ.getName());
-        assertEquals((short) 100, champ.getHp());
-        assertEquals((short) 35, champ.getSpeed());
+        assertEquals((short) 1000, champ.getHp());
+        assertEquals((short) 10, champ.getSpeed());
+        assertEquals((short) 35, champ.getTotalSpeed());
         assertEquals("boots", champ.boots.getName());
         assertEquals((short) 25, champ.boots.getSpeed());
         assertEquals("Broad sword", champ.weapon.getName());
@@ -60,7 +63,25 @@ public class ChampionTest {
 
         // check speed setter
         champ.setSpeed((short) 20);
-        assertEquals(40, champ.getSpeed());
+        assertEquals(20, champ.getSpeed());
+        assertEquals(40, champ.getTotalSpeed());
+    }
+
+    @Test
+    public void testIncreaseHP(){
+        champ.setHp((short) 2000);
+        assertEquals(1000, champ.getHp());
+        champ.decreaseHp((short) 500);
+        champ.increaseHp((short) 100);
+        assertEquals(600, champ.getHp());
+    }
+
+    @Test
+    public void testDecreaseHP(){
+        champ.decreaseHp((short) 900);
+        assertEquals(100, champ.getHp());
+        champ.decreaseHp((short) 1000);
+        assertEquals(0, champ.getHp());
     }
 
 }

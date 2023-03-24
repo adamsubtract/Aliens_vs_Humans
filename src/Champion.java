@@ -1,5 +1,6 @@
 
 public class Champion {
+    final short MAX_HEALTH = 1000;
     private String name;
     private short hp = 1000;
     private short speed = 10;
@@ -71,7 +72,7 @@ public class Champion {
     }
 
     public void increaseHp(short health) {
-        if((hp + health) >= 1000) hp = 1000;
+        if((hp + health) >= MAX_HEALTH) hp = MAX_HEALTH;
         else hp += health;
     }
 
@@ -96,6 +97,9 @@ public class Champion {
         return speed;
     }
 
+    public short getTotalSpeed(){
+        return (short) (speed + boots.getSpeed());
+    }
 
     /**
      * Setters
