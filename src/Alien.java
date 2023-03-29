@@ -1,12 +1,17 @@
 
 public class Alien extends Champion {
-    private int shield;
-    private int magicDamage;
+    private short shield;
+    private short magicDamage;
     private String race;
-    private int mana;
+    private short mana;
 
-    public Alien(String name, String type, Weapon weapon, Boots boots, int shield, int magicDamage,
-                 String race, int mana){
+    public Alien(String name,
+                 Weapon weapon,
+                 Boots boots,
+                 short shield,
+                 short magicDamage,
+                 String race,
+                 short mana){
 
         super(name, boots, weapon);
         this.shield = shield;
@@ -16,16 +21,15 @@ public class Alien extends Champion {
     }
 
 
-
     /**
-     * Getters and Setters
+     * Getters
      */
 
-    public int getShield() {
+    public short getShield() {
         return shield;
     }
 
-    public int getMagicDamage() {
+    public short getMagicDamage() {
         return magicDamage;
     }
 
@@ -33,15 +37,20 @@ public class Alien extends Champion {
         return race;
     }
 
-    public int getMana() {
+    public short getMana() {
         return mana;
     }
 
-    public void setShield(int shield) {
+
+    /**
+     * Setters
+     */
+
+    public void setShield(short shield) {
         this.shield = shield;
     }
 
-    public void setMagicDamage(int magicDamage) {
+    public void setMagicDamage(short magicDamage) {
         this.magicDamage = magicDamage;
     }
 
@@ -49,7 +58,7 @@ public class Alien extends Champion {
         this.race = race;
     }
 
-    public void setMana(int mana) {
+    public void setMana(short mana) {
         this.mana = mana;
     }
 }
