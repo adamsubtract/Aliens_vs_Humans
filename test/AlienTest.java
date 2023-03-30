@@ -1,16 +1,40 @@
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AlienTest {
 
-    Alien alien = new Alien("ET",
+    Alien alien;
+    Alien alien2;
+    Human human;
+
+    @Before
+    public void testObjects(){
+        alien = new Alien("ET",
                 new Champion.Weapon("Energy sword", (short) 100),
                 new Champion.Boots("Mana", (short) 50),
                 (short) 50,
                 (short) 100,
-            "Protoss",
+                "Protoss",
                 (short) 100);
+
+        alien2 = new Alien("Arbiter",
+                new Champion.Weapon("Energy sword", (short) 100),
+                new Champion.Boots("Mana", (short) 50),
+                (short) 50,
+                (short) 100,
+                "Protoss",
+                (short) 100);
+
+        human = new Human("Sam", "Fighter", "Male",
+                new Champion.Weapon("Fists", (short)100),
+                new Champion.Boots("regular", (short) 50),
+                new Human.Armour("cloth", (short) 50));
+    }
+
+
+
 
     @Test
     public void testGetters(){
@@ -48,5 +72,25 @@ public class AlienTest {
         assertEquals(200, alien.getMana());
     }
 
+    @Test
+    public void testAttack(){
+        alien.attack(alien2);
+        assertEquals(850, alien2.getHp());
+
+        // damage alien2 more than hp.
+        alien.setMagicDamage((short) 1000);
+        alien.attack(alien2);
+        assertEquals(0, alien2.getHp());
+
+        // attack human
+        alien.setMagicDamage((short) 200);
+        alien.attack(human);
+        assertEquals(750, human.getHp());
+
+        // attack human below zero hp
+        alien.setMagicDamage((short) 1000);
+        alien.attack(human);
+        assertEquals(0, human.getHp());
+    }
 
 }

@@ -20,6 +20,33 @@ public class Alien extends Champion {
         this.mana = mana;
     }
 
+    /**
+     * This method simulates and attack between two Human entities or Human
+     * and Alien entity.
+     * @param target is the Human or Alien being attacked
+     * @param <T> Champion, Human or Alien entity.
+     */
+
+    public <T extends Champion> void attack(T target){
+        target.decreaseHp(getTotalDamage());
+    }
+
+    /**
+     * decreases Aliens health.
+     * @param damage how much health to be removed.
+     */
+    @Override
+    public void decreaseHp(short damage) {
+        if((getHp() + getShield() - damage) < 1)
+            setHp((byte) 0);
+        else if ( (getHp() + getShield()) - damage > MAX_HEALTH ) {
+            setHp((byte) MAX_HEALTH);
+        }
+        else
+            setHp((short) ((getHp() + getShield()) - damage));
+    }
+
+
 
     /**
      * Getters
@@ -39,6 +66,14 @@ public class Alien extends Champion {
 
     public short getMana() {
         return mana;
+    }
+
+    public short getTotalDamage(){
+        return (short) (getMagicDamage() + weapon.getDamage());
+    }
+
+    public short getTotalSpeed(){
+        return (short) (getSpeed() + boots.getSpeed());
     }
 
 
